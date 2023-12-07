@@ -1,3 +1,13 @@
+DROP TABLE Clients;
+DROP TABLE Brands;
+DROP TABLE Color;
+DROP TABLE Materials;
+DROP TABLE Employees;
+DROP TABLE Positions;
+DROP TABLE Products;
+DROP TABLE Orders;
+DROP TABLE Size;
+
 CREATE TABLE IF NOT EXISTS Employees
 (
     emp_id         INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -5,9 +15,11 @@ CREATE TABLE IF NOT EXISTS Employees
     emp_last_name  VARCHAR(100),
     emp_patronymic VARCHAR(100),
     emp_position   INTEGER REFERENCES Positions (pos_id),
-    emp_phone      INTEGER(11) UNIQUE,
+    -- Убираю Unique для генерации
+    emp_phone      INTEGER(11),
     emp_birth_date DATE,
-    emp_mail       TEXT UNIQUE
+    -- Убираю Unique для генерации
+    emp_mail       TEXT
 );
 
 CREATE TABLE IF NOT EXISTS Positions
@@ -25,8 +37,7 @@ CREATE TABLE IF NOT EXISTS Products
     prod_price    REAL,
     prod_color    INTEGER REFERENCES Color (color_id),
     prod_material INTEGER REFERENCES Materials (material_id),
-    --- 42-44
-    prod_size          varchar(5)
+    prod_size     INTEGER REFERENCES Size (size_id)
 );
 
 CREATE TABLE IF NOT EXISTS Clients
@@ -36,7 +47,8 @@ CREATE TABLE IF NOT EXISTS Clients
     cl_last_name  VARCHAR(100),
     cl_patronymic VARCHAR(100),
     cl_address    TEXT,
-    cl_phone      INTEGER UNIQUE
+        -- Убираю Unique для генерации
+    cl_phone      INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS Orders
@@ -50,8 +62,9 @@ CREATE TABLE IF NOT EXISTS Orders
 
 CREATE TABLE IF NOT EXISTS Size
 (
-    size_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    prod_id INTEGER REFERENCES Products (prod_id)
+    size_id   INTEGER PRIMARY KEY AUTOINCREMENT,
+    --- 42-44
+    size_size varchar(5) UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS Brands
@@ -73,13 +86,7 @@ CREATE TABLE IF NOT EXISTS Materials
     material_name varchar(50)
 );
 
-DROP TABLE Clients;
-DROP TABLE Brands;
-DROP TABLE Color;
-DROP TABLE Materials;
-DROP TABLE Employees;
-DROP TABLE Positions;
-DROP TABLE Products;
+
 
 INSERT INTO Color (color_name)
 VALUES ('Хаки');
@@ -106,4 +113,4 @@ VALUES ('Продавец');
 INSERT INTO Positions (pos_name)
 VALUES ('Босс');
 INSERT INTO Positions (pos_name)
-VALUES ('Курьер')
+VALUES ('Курьер');
