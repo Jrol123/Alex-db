@@ -6,7 +6,7 @@ from faker import Faker
 from russian_names import RussianNames
 
 fake = Faker(['ru_RU', 'en_US'])
-max_count = 10 ** 6
+max_count = int(input("Введите максимальное количыество записей"))
 
 connection = sqlite3.connect('identifier.sqlite')
 cursor = connection.cursor()

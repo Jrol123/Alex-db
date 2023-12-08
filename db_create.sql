@@ -1,12 +1,12 @@
-DROP TABLE Clients;
-DROP TABLE Brands;
-DROP TABLE Color;
-DROP TABLE Materials;
-DROP TABLE Employees;
-DROP TABLE Positions;
-DROP TABLE Products;
-DROP TABLE Orders;
-DROP TABLE Size;
+DROP TABLE IF EXISTS Clients;
+DROP TABLE IF EXISTS Brands;
+DROP TABLE IF EXISTS Color;
+DROP TABLE IF EXISTS Materials;
+DROP TABLE IF EXISTS Employees;
+DROP TABLE IF EXISTS Positions;
+DROP TABLE IF EXISTS Products;
+DROP TABLE IF EXISTS Orders;
+DROP TABLE IF EXISTS Size;
 
 CREATE TABLE IF NOT EXISTS Employees
 (
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS Clients
     cl_last_name  VARCHAR(100),
     cl_patronymic VARCHAR(100),
     cl_address    TEXT,
-        -- Убираю Unique для генерации
+    -- Убираю Unique для генерации
     cl_phone      INTEGER
 );
 
