@@ -1,3 +1,3 @@
-datetime
+DateTime
+Faker
 russian-names
-faker
