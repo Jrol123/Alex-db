@@ -18,7 +18,7 @@ count_materials = cursor.fetchone()[0]
 """Создание размеров"""
 print("Создание размеров")
 for s_size in range(40, 100 - 2 + 1):
-    s_size = f'{s_size}-{s_size - 2}'
+    s_size = f'{s_size}-{s_size + 2}'
     cursor.execute(
         'INSERT INTO Size (size_size) VALUES (?)',
         (s_size,)
