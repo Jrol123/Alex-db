@@ -16,6 +16,7 @@ count_materials = cursor.fetchone()[0]
 
 # Если не создавать размеры вручную, то нужно использовать это.
 """Создание размеров"""
+print("Создание размеров")
 for s_size in range(40, 100 - 2 + 1):
     s_size = f'{s_size}-{s_size - 2}'
     cursor.execute(
@@ -93,3 +94,5 @@ for _ in range(1, max_count + 1):
 
 connection.commit()
 connection.close()
+
+input("\n\nЗапись данных успешно завершена!\n\n\nНАЖМИТЕ ЛЮБУЮ КЛАВИШУ ДЛЯ ВЫХОДА...")
